@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Monuments" %>
+
+<h1>Monuments</h1>
+
+<div data-controller="insert-in-list" class="d-flex justify-content-between">
+  <div id="monuments" data-insert-in-list-target="items">
+    <% @monuments.each do |monument| %>
+      <%= render monument %>
+    <% end %>
+  </div>
+
+  <div data-controller="toggle" class="mt-5" style="margin-right: 5rem;">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new monument</button>
+    <div data-toggle-target="toggableElement" class="d-none">
+      <%= render "form", monument: @monument %>
+    </div>
+  </div>
+</div>
